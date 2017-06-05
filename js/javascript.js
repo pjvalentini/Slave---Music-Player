@@ -41,14 +41,14 @@ function initAudio(element) {
 	});
 
 // Pause Button
-$('#pause').click(function(){
+$('#pause').click(function() {
 	audio.pause();
 	$('#pause').hide();
 	$('#play').show();
 });
 
 // Stop Button
-$('#stop').click(function(){
+$('#stop').click(function() {
 	audio.pause();
 	audio.currentTime = 0;
 	$('#pause').hide();
@@ -97,13 +97,13 @@ $('#volume').change(function(){
 	audio.volume = parseFloat(this.value / 10);
 });
 
-//Time Duration
-function showDuration(){
+// Time Duration
+function showDuration() {
 	$(audio).bind('timeupdate', function() {
-		//Get hours and minutes
+		// Get hours and minutes
 		var seconds = parseInt(audio.currentTime % 60);
 		var minutes = parseInt((audio.currentTime / 60) % 60);
-		//Add 0 if seconds less than 10
+		// Add 0 if seconds less than 10
 		if (seconds < 10) {
 			seconds = '0' + seconds;
 		}
