@@ -239,7 +239,7 @@ jQuery.fn = jQuery.prototype = {
 	// Get the Nth element in the matched element set OR
 	// Get the whole matched element set as a clean array
 	get: function( num ) {
-		return num == null ?
+		return num === null ?
 
 			// Return a 'clean' array
 			this.toArray() :
@@ -343,7 +343,7 @@ jQuery.extend = jQuery.fn.extend = function() {
 
 	for ( ; i < length; i++ ) {
 		// Only deal with non-null/undefined values
-		if ( (options = arguments[ i ]) != null ) {
+		if ( (options = arguments[ i ]) !== null ) {
 			// Extend the base object
 			for ( name in options ) {
 				src = target[ name ];
@@ -450,7 +450,7 @@ jQuery.extend({
 	},
 
 	isWindow: function( obj ) {
-		return obj != null && obj == obj.window;
+		return obj !== null && obj === obj.window;
 	},
 
 	isNumeric: function( obj ) {
@@ -458,7 +458,7 @@ jQuery.extend({
 	},
 
 	type: function( obj ) {
-		if ( obj == null ) {
+		if ( obj === null ) {
 			return String( obj );
 		}
 		return typeof obj === "object" || typeof obj === "function" ?
@@ -470,7 +470,7 @@ jQuery.extend({
 		// Must be an Object.
 		// Because of IE, we also have to check the presence of the constructor property.
 		// Make sure that DOM nodes and window objects don't pass through, as well
-		if ( !obj || jQuery.type(obj) !== "object" || obj.nodeType || jQuery.isWindow( obj ) ) {
+		if ( !obj || jQuery.type(obj) !== "object" || obj.nodeType || jQuery.isWindow(obj)) {
 			return false;
 		}
 

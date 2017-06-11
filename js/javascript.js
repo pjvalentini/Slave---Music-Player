@@ -1,4 +1,4 @@
-// global $;
+/* globals $ */
 var audio;
 
 // Hide Pause Initially
@@ -32,13 +32,13 @@ function initAudio(element) {
 }
 
 // Play Button
-	$('#play').click(function() {
-		audio.play();
-		$('#play').hide();
-		$('#pause').show();
-		$('#duration').fadeIn(400);
-		showDuration();
-	});
+$('#play').click(function() {
+	audio.play();
+	$('#play').hide();
+	$('#pause').show();
+	$('#duration').fadeIn(400);
+	showDuration();
+});
 
 // Pause Button
 $('#pause').click(function() {
@@ -57,11 +57,11 @@ $('#stop').click(function() {
 });
 
 // Next Button
-$('#next').click(function(){
+$('#next').click(function() {
 	audio.pause();
 	var next = $('#playlist li.active').next();
 	if (next.length === 0) {
-			next = $('#playlist li:first-child');
+		next = $('#playlist li:first-child');
 	}
 	initAudio(next);
 	audio.play();
@@ -69,11 +69,11 @@ $('#next').click(function(){
 });
 
 // Prev Button
-$('#prev').click(function(){
+$('#prev').click(function() {
 	audio.pause();
 	var prev = $('#playlist li.active').prev();
 	if (prev.length === 0) {
-	prev = $('#playlist li:last-child');
+		prev = $('#playlist li:last-child');
 	}
 	initAudio(prev);
 	audio.play();
@@ -81,10 +81,9 @@ $('#prev').click(function(){
 });
 
 // Playlist Song Click
-
 $('#playlist li').click(function() {
-		audio.pause();
-		initAudio($(this));
+	audio.pause();
+	initAudio($(this));
 	$('#play').hide();
 	$('#pause').show();
 	$('#duration').fadeIn(400);
@@ -93,7 +92,7 @@ $('#playlist li').click(function() {
 });
 
 // Volume Control
-$('#volume').change(function(){
+$('#volume').change(function() {
 	audio.volume = parseFloat(this.value / 10);
 });
 
