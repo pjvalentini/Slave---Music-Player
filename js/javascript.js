@@ -1,11 +1,91 @@
 /* globals $ */
 var audio;
+var playlist = [
+	{
+		"song": "ActToo.mp3",
+		"cover": "TheRoots.jpg",
+		"artist": "The Roots",
+	},
+	{
+		"song": "AintNobody.mp3",
+		"cover": "ChakaKhan.jpg",
+		"artist": "Chaka Khan",
+	},
+	{
+		"song": "Ants.mp3",
+		"cover": "Edit.jpg",
+		"artist": "edIT",
+	},
+	{
+		"song": "BabsUvulaWho.mp3",
+		"cover": "GreenDay.jpg",
+		"artist": "Green Day",
+	},
+	{
+		"song": "Decimate.mp3",
+		"cover": "Amalgamate.jpg",
+		"artist": "Amaglamate",
+	},
+	{
+		"song": "ForThoseAboutToRock.mp3",
+		"cover": "ACDC.jpg",
+		"artist": "ACDC",
+	},
+	{
+		"song": "FunkinForJamaica.mp3",
+		"cover": "TomBrowne.jpg",
+		"artist": "Tom Browne",
+	},
+	{
+		"song": "LongCoolWoman.mp3",
+		"cover": "TheHollies.jpg",
+		"artist": "The Hollies",
+	},
+	{
+		"song": "RockYourBody.mp3",
+		"cover": "JustinTimberlake.jpg",
+		"artist": "Justin Timberlake",
+	},
+	{
+		"song": "TheSpark.mp3",
+		"cover": "TheRoots.jpg",
+		"artist": "The Roots",
+	},
+];
 
 // Hide Pause Initially
 $('#pause').hide();
 
+
+function getPlaylist() {
+	return playlist;
+}
+
+function setPlaylist(p) {
+	playlist = p;
+}
+
+function renderPlaylist() {
+	$('#playlist').html('');
+	getPlaylist().forEach(function(item) {
+		var li = $('<li>')
+			.attr('song', item.song)
+			.attr('cover', item.cover)
+			.attr('artist', item.artist)
+			.text(item.song);
+		$('#playlist').append(li);
+	});
+}
+
+renderPlaylist();
+
 // Initialize - Play First Song
 initAudio($('#playlist li:first-child'));
+
+function update() {
+
+}
+
 
 // Initializer Function
 function initAudio(element) {
@@ -14,7 +94,7 @@ function initAudio(element) {
 	var cover = element.attr('cover');
 	var artist = element.attr('artist');
 
-// Create a New Audio Object
+// Create a New Audio Object instance.
 	audio = new Audio('songs/' + song);
 
 // If song is not playing then duration starts at 0.00
