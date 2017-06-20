@@ -6,6 +6,7 @@
     <link rel="stylesheet" href="css/main.css">
     <link rel="stylesheet" href="css/responsive.css">
     <link rel="stylesheet" href="css/reset.css">
+    <script src="https://connect.soundcloud.com/sdk/sdk-3.1.2.js"></script>
   </head>
   <body>
     <h1 class="slaveLogo">SLAVE<sup>&reg;</sup></h1>
@@ -13,6 +14,13 @@
       <img class="audioLogo" src="img/audioIcon.png">
     </div>
     <h4 class="mediaPlayer">Music Player</h4>
+      <div>
+        <img class="soundCloudLogo" src="img/soundcloud.png">
+      </div>
+      <div class="search">
+        <input id="searchInput" class="songInput" name="search" type="text" placeholder="   Type an artist or song title.">
+        <button class="submitBtn">Search</button>
+      </div>
     <div id="container">
       <div id="audio-img">
         <img class="cover">
@@ -29,6 +37,8 @@
           <button id="pause"></button>
           <button id="stop"></button>
           <button id="next"></button>
+          <!-- <button id="shuffle"></button>
+          <button id="mute"></button> -->
         </div>
         <div class="clearfix"></div>
         <div id="tracker">

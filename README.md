@@ -11,3 +11,9 @@ The interface displays an Album Cover with associated song id data.
 
       * Volume Control is now working, more buttons to come...
         Now all song, cover and artists data is now referenced in the JS sheet.
+
+      * Adding functionality to Soundcloud API still not working yet.
+        - can play one track off of a search...but only play button works now.
+        - Need to fix. 6/19/17
+
+      * Minor CSS upgrades. 6/19/17

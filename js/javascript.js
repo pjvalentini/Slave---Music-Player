@@ -1,78 +1,107 @@
-/* globals $ */
+/* globals $, SC */
+
 var audio;
 var playlist = [
 	{
 		"song": "ActToo.mp3",
-		"cover": "TheRoots.jpg",
-		"artist": "The Roots",
+		"artwork_url": "TheRoots.jpg",
+		"genre": "The Roots",
 	},
 	{
 		"song": "AintNobody.mp3",
-		"cover": "ChakaKhan.jpg",
-		"artist": "Chaka Khan",
+		"artwork_url": "ChakaKhan.jpg",
+		"genre": "Chaka Khan",
 	},
 	{
 		"song": "Ants.mp3",
-		"cover": "Edit.jpg",
-		"artist": "edIT",
+		"artwork_url": "Edit.jpg",
+		"genre": "edIT",
 	},
 	{
 		"song": "BabsUvulaWho.mp3",
-		"cover": "GreenDay.jpg",
-		"artist": "Green Day",
+		"artwork_url": "GreenDay.jpg",
+		"genre": "Green Day",
 	},
 	{
 		"song": "Decimate.mp3",
-		"cover": "Amalgamate.jpg",
-		"artist": "Amaglamate",
+		"artwork_url": "Amalgamate.jpg",
+		"genre": "Amaglamate",
 	},
 	{
 		"song": "ForThoseAboutToRock.mp3",
-		"cover": "ACDC.jpg",
-		"artist": "ACDC",
+		"artwork_url": "ACDC.jpg",
+		"genre": "ACDC",
 	},
 	{
 		"song": "FunkinForJamaica.mp3",
-		"cover": "TomBrowne.jpg",
-		"artist": "Tom Browne",
+		"artwork_url": "TomBrowne.jpg",
+		"genre": "Tom Browne",
 	},
 	{
 		"song": "LongCoolWoman.mp3",
-		"cover": "TheHollies.jpg",
-		"artist": "The Hollies",
+		"artwork_url": "TheHollies.jpg",
+		"genre": "The Hollies",
 	},
 	{
 		"song": "RockYourBody.mp3",
-		"cover": "JustinTimberlake.jpg",
-		"artist": "Justin Timberlake",
+		"artwork_url": "JustinTimberlake.jpg",
+		"genre": "Justin Timberlake",
 	},
 	{
 		"song": "TheSpark.mp3",
-		"cover": "TheRoots.jpg",
-		"artist": "The Roots",
+		"artwork_url": "TheRoots.jpg",
+		"genre": "The Roots",
 	},
 ];
 
 // Hide Pause Initially
 $('#pause').hide();
 
-
+// Gets the current playlist
 function getPlaylist() {
 	return playlist;
 }
 
+// Sets the current playlist
 function setPlaylist(p) {
 	playlist = p;
 }
 
+// SC.initialize({
+// 	client_id: 'fd4e76fc67798bfa742089ed619084a6',
+// });
+//
+// // Search Function and renders the playlist.
+// function search(searchTerm) {
+// 	SC.get('/tracks', {
+// 		q: searchTerm,
+// 	}).then(function(tracks) {
+// 		playlist = tracks;
+// 		renderPlaylist();
+//
+// 	SC.stream('/tracks/' + tracks[0].id).then(function(player){
+// 		player.play();
+// 	  });
+// 	});
+// }
+// // Add the ability to search
+// document.addEventListener("DOMContentLoaded", function(event) {
+// 	var input = document.getElementById('searchInput');
+// 	input.addEventListener('keyup', function(evt) {
+// 		search(input.value);
+// 	});
+// });
+
+
 function renderPlaylist() {
 	$('#playlist').html('');
+// Looping over the array of songs.
 	getPlaylist().forEach(function(item) {
 		var li = $('<li>')
 			.attr('song', item.song)
-			.attr('cover', item.cover)
-			.attr('artist', item.artist)
-			.text(item.song);
+			.attr('cover', item.artwork_url)
+			.attr('artist', item.genre)
+			.text(item.genre);
 		$('#playlist').append(li);
 	});
 }
@@ -81,10 +110,6 @@ renderPlaylist();
 
 // Initialize - Play First Song
 initAudio($('#playlist li:first-child'));
-
-function update() {
-
-}
 
 
 // Initializer Function
