@@ -54,6 +54,8 @@ var playlist = [
 	},
 ];
 
+var currentTrackId;
+
 SC.initialize({
 	client_id: 'fd4e76fc67798bfa742089ed619084a6',
 });
@@ -75,6 +77,7 @@ function play(id) {
 	SC.stream('/tracks/' + id).then(function(player) {
 		player.play();
 	});
+	currentTrackId = id;
 }
 
 // Search Function and renders the playlist.
