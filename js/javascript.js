@@ -84,7 +84,7 @@ function search(searchTerm) {
 	}).then(function(tracks) {
 		playlist = tracks;
 		renderPlaylist(tracks);
-		play(playlist[0].id); // this is just for testing it should be removed
+		// play(playlist[0].id); // this is just for testing it should be removed
 	});
 }
 // Add the ability to search
@@ -104,11 +104,17 @@ function renderPlaylist() {
 			.attr('song', item.song)
 			.attr('cover', item.artwork_url)
 			.attr('artist', item.genre)
+						 .attr('id', item.id)
 			.text(item.genre);
 		$('#playlist').append(li);
 	});
 }
 renderPlaylist();
+
+// event listener on the playlist <li>
+$("#playlist").click(function() {
+	alert("Handler for .click() called.");
+});
 
 // Initialize - Play First Song
 initAudio($('#playlist li:first-child'));
