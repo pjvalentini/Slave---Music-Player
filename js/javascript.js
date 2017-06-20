@@ -105,16 +105,17 @@ function renderPlaylist() {
 			.attr('cover', item.artwork_url)
 			.attr('artist', item.genre)
 						 .attr('id', item.id)
+// Adding an event listener on the <li>.
+						 .click(function(id) {
+							 play(li.attr('id'));
+						 })
 			.text(item.genre);
 		$('#playlist').append(li);
 	});
 }
 renderPlaylist();
 
-// event listener on the playlist <li>
-$("#playlist").click(function() {
-	alert("Handler for .click() called.");
-});
+
 
 // Initialize - Play First Song
 initAudio($('#playlist li:first-child'));
