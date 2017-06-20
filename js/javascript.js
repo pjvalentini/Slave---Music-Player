@@ -54,6 +54,10 @@ var playlist = [
 	},
 ];
 
+SC.initialize({
+	client_id: 'fd4e76fc67798bfa742089ed619084a6',
+});
+
 // Hide Pause Initially
 $('#pause').hide();
 
@@ -67,9 +71,11 @@ function setPlaylist(p) {
 	playlist = p;
 }
 
-SC.initialize({
-	client_id: 'fd4e76fc67798bfa742089ed619084a6',
-});
+function play(id) {
+	SC.stream('/tracks/' + id).then(function(player) {
+		player.play();
+	});
+}
 
 // Search Function and renders the playlist.
 function search(searchTerm) {
@@ -78,10 +84,7 @@ function search(searchTerm) {
 	}).then(function(tracks) {
 		playlist = tracks;
 		renderPlaylist(tracks);
-
-	SC.stream('/tracks/' + tracks[0].id).then(function(player) {
-		player.play();
-		});
+		play(playlist[0].id); // this is just for testing it should be removed
 	});
 }
 // Add the ability to search
