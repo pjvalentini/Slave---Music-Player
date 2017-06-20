@@ -78,16 +78,17 @@ body{
 }
 
 #container{
-	width:330px;
+	width:500px;
 	min-height:400px;
 	background:#333;
 	overflow: auto;
 	margin: 60px auto;
   margin-top: -7px;
-  border: #667 solid 2px;
+  border: #ff4a00 solid 2px;
   -moz-border-radius:10px;
 	-webkit-border-radius:10px;
 	border-radius:10px;
+  background:url(../img/carbon3.jpg) no-repeat;
 }
 
 #audio-img{
@@ -98,6 +99,8 @@ body{
 }
 
 #audio-info{
+  font-family: "Helvetica Neue", sans-serif;
+  font-weight: 200;
 	text-align:center;
   font-size: 16px;
 }
@@ -108,54 +111,65 @@ body{
 }
 
 .cover{
-	width:100%;
-	z-index:1;
+  margin-left: 145px;
+	width: 42%;
+  overflow: auto;
 }
 
 input#volume {
-	width:95%;
+	width:96%;
 	margin-left:2%;
-    -webkit-appearance: none !important;
+  -webkit-appearance: none;
     background:#ccc;
     height:1px;
 	margin-bottom:20px;
 }
 
 input#volume::-webkit-slider-thumb {
-    -webkit-appearance: none !important;
-    background:url(../img/knob.png) no-repeat;
-    height:12px;
-    width:12px;
+  -webkit-appearance: none;
+  background:url(../img/knob.png) no-repeat;
+  height:12px;
+  width:12px;
 }
 
 #audio-buttons{
-	width:90%;
-	display: block;
-  margin: 15px auto;
-	margin-left:23px;
-	overflow:auto;
+  width: 60%;
+  display: block;
+  margin: 6px auto;
+  margin-left: 110px;
+  overflow: auto;
 }
 
 
 button#play{
+  cursor: pointer;
 	width:70px;
 	height:70px;
+  border: 1px solid #ff4a00;
+  border-radius: 9px;
 	background:url(../img/play.png) no-repeat;float:left;
 }
 
 button#pause{
+  cursor: pointer;
 	width: 70px;
 	height: 70px;
+  border: 1px solid #ff4a00;
+  border-radius: 9px;
 	background: url(../img/pause.png) no-repeat;float:left;
 }
 
 button#stop{
+  cursor: pointer;
 	width: 70px;
 	height: 70px;
+  border: 1px solid #ff4a00;
+  border-radius: 9px;
 	background: url(../img/stop.png) no-repeat;float:left;
 }
 
 button#prev{
+  cursor: pointer;
 	width: 70px;
 	height: 70px;
 	background: url(../img/prev.png) no-repeat;
@@ -164,9 +178,11 @@ button#prev{
 }
 
 button#next{
+  cursor: pointer;
 	width: 70px;
 	height: 70px;
   margin-top: 14px;
+  margin-right: 4px;
 	background: url(../img/next.png) no-repeat;
 	float: right;
 	margin-top: auto 15px;
@@ -194,6 +210,8 @@ button#next{
 #playlist li {
   cursor: pointer;
   margin:5px;
+  font-size: 15px;
+  font-weight: 100;
 }
 
 #tracker{
@@ -204,32 +222,33 @@ button#next{
 #playlist li.active {
   font-weight: bold;
 	padding:3px;
-	background:#666;
+	background:#ff4a00;
+  border-radius: 5px;
 }
 
 #progressbar {
-  width:80%;
-  margin-left:2%;
-  margin-bottom:20px;
-  margin-top: 30px;
-  height: 10px;
-  background:url(../img/progress_bg.png) no-repeat;
-  float:left;
+  width: 80%;
+  margin-left: 23%;
+  margin-bottom: 3px;
+  margin-top: 15px;
+  height: 20px;
+  background: url(../img/progress_bg.png) no-repeat;
+  float: left;
 }
 
 #progress {
-   background:url(../img/progress.png) no-repeat;
-   height:10px;
-   display:inline-block;
+  background:url(../img/progress.png) no-repeat;
+  height:10px;
+  display:inline-block;
 }
 
 #duration{
-	position:absolute;
-	top: 20px;
-	right: 10px;
-	padding: 4px 8px;
-	background: #000;
-	border-radius: 5px;
+ position:absolute;
+ font-size: 24px;
+ top: 6px;
+ right: 33px;
+ padding: 3px 15px;
+
 }
 
 #tracker {
