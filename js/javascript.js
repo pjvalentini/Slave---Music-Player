@@ -56,8 +56,6 @@ var playlist = [
 // Set a a gloabl var currentTrackID...
 var currentTrackId;
 
-var currentTrackId;
-
 SC.initialize({
 	client_id: 'fd4e76fc67798bfa742089ed619084a6',
 });
@@ -80,11 +78,7 @@ function play(id) {
 	SC.stream('/tracks/' + id).then(function(player) {
 		player.play();
 	});
-<<<<<<< HEAD
-=======
-// currentTrackId and when a track is played I set
-// currentTrackId = the id to the track that was played
->>>>>>> removed local playlist in favor of soundcloud playlist, first searched track plays auto
+
 	currentTrackId = id;
 }
 
