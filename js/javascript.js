@@ -1,64 +1,13 @@
 /* globals $, SC */
 
 var audio;
-var playlist = [
-	{
-		"song": "ActToo.mp3",
-		"artwork_url": "TheRoots.jpg",
-		"genre": "The Roots",
-	},
-	{
-		"song": "AintNobody.mp3",
-		"artwork_url": "ChakaKhan.jpg",
-		"genre": "Chaka Khan",
-	},
-	{
-		"song": "Ants.mp3",
-		"artwork_url": "Edit.jpg",
-		"genre": "edIT",
-	},
-	{
-		"song": "BabsUvulaWho.mp3",
-		"artwork_url": "GreenDay.jpg",
-		"genre": "Green Day",
-	},
-	{
-		"song": "Decimate.mp3",
-		"artwork_url": "Amalgamate.jpg",
-		"genre": "Amaglamate",
-	},
-	{
-		"song": "ForThoseAboutToRock.mp3",
-		"artwork_url": "ACDC.jpg",
-		"genre": "ACDC",
-	},
-	{
-		"song": "FunkinForJamaica.mp3",
-		"artwork_url": "TomBrowne.jpg",
-		"genre": "Tom Browne",
-	},
-	{
-		"song": "LongCoolWoman.mp3",
-		"artwork_url": "TheHollies.jpg",
-		"genre": "The Hollies",
-	},
-	{
-		"song": "RockYourBody.mp3",
-		"artwork_url": "JustinTimberlake.jpg",
-		"genre": "Justin Timberlake",
-	},
-	{
-		"song": "TheSpark.mp3",
-		"artwork_url": "TheRoots.jpg",
-		"genre": "The Roots",
-	},
-];
+var playlist = [];
 // Set a a gloabl var currentTrackID...
 var currentTrackId;
 
-SC.initialize({
-	client_id: 'fd4e76fc67798bfa742089ed619084a6',
-});
+	SC.initialize({
+		client_id: 'fd4e76fc67798bfa742089ed619084a6',
+	});
 
 // Hide Pause Initially
 $('#pause').hide();
@@ -154,7 +103,7 @@ function initAudio(element) {
 
 // Play Button
 $('#play').click(function() {
-	audio.play();
+	play(currentTrackId);
 	$('#play').hide();
 	$('#pause').show();
 	$('#duration').fadeIn(400);
@@ -185,7 +134,7 @@ $('#next').click(function() {
 		next = $('#playlist li:first-child');
 	}
 	initAudio(next);
-	audio.play();
+	play(currentTrackId);
 	showDuration();
 });
 
@@ -197,7 +146,7 @@ $('#prev').click(function() {
 		prev = $('#playlist li:last-child');
 	}
 	initAudio(prev);
-	audio.play();
+	play(currentTrackId);
 	showDuration();
 });
 
@@ -208,7 +157,7 @@ $('#playlist li').click(function() {
 	$('#play').hide();
 	$('#pause').show();
 	$('#duration').fadeIn(400);
-	audio.play();
+	play(currentTrackId);
 	showDuration();
 });
 
