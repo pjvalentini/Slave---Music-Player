@@ -235,3 +235,4 @@ function showDuration() {
 		$('#progress').css('width', value + '%');
 	});
 }
+search("David Bowie");
