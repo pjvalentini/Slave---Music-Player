@@ -53,6 +53,8 @@ var playlist = [
 		"genre": "The Roots",
 	},
 ];
+// Set a a gloabl var currentTrackID...
+var currentTrackId;
 
 var currentTrackId;
 
@@ -73,10 +75,16 @@ function setPlaylist(p) {
 	playlist = p;
 }
 
+// Play function that accepts an ID.
 function play(id) {
 	SC.stream('/tracks/' + id).then(function(player) {
 		player.play();
 	});
+<<<<<<< HEAD
+=======
+// currentTrackId and when a track is played I set
+// currentTrackId = the id to the track that was played
+>>>>>>> removed local playlist in favor of soundcloud playlist, first searched track plays auto
 	currentTrackId = id;
 }
 
@@ -87,7 +95,7 @@ function search(searchTerm) {
 	}).then(function(tracks) {
 		playlist = tracks;
 		renderPlaylist(tracks);
-		// play(playlist[0].id); // this is just for testing it should be removed
+		play(playlist[0].id); // this is just for testing it should be removed
 	});
 }
 // Add the ability to search
@@ -109,6 +117,8 @@ function renderPlaylist() {
 			.attr('artist', item.genre)
 						 .attr('id', item.id)
 // Adding an event listener on the <li>.
+// 1. add ID to the newly created li
+// 2. add a click event to that same li calling the play function with that ID
 						 .click(function(id) {
 							 play(li.attr('id'));
 						 })
@@ -116,7 +126,7 @@ function renderPlaylist() {
 		$('#playlist').append(li);
 	});
 }
-renderPlaylist();
+// renderPlaylist();
 
 
 
