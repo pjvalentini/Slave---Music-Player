@@ -4,6 +4,8 @@ var audio;
 var playlist = [];
 // Set a a gloabl var currentTrackID...
 var currentTrackId;
+var currentTrackIndex = 0;
+var player;
 
 	SC.initialize({
 		client_id: 'fd4e76fc67798bfa742089ed619084a6',
@@ -24,21 +26,53 @@ function setPlaylist(p) {
 
 // Play function that accepts an ID.
 function play(id) {
-	SC.stream('/tracks/' + id).then(function(player) {
+	if (!id) {
+		id = playlist[currentTrackIndex].id;
+	}
+
+	SC.stream('/tracks/' + id).then(function(p) {
+		player = p;
 		player.play();
 	});
-
 	currentTrackId = id;
+} // end play
+
+function pause() {
+	player.pause();
 }
 
-// Search Function and renders the playlist.
+function prev() {
+	currentTrackIndex = currentTrackIndex - 1;
+	if (this.currentTrackIndex < 0) {
+		  this.currentTrackIndex = this.playlist.length - 1;
+	}
+	play(playlist[currentTrackIndex].id);
+	// need loop here?
+	console.log(playlist[currentTrackIndex]);
+}
+
+function next() {
+	currentTrackIndex = currentTrackIndex + 1;
+	if (this.currentTrackIndex > this.playlist.length - 1) {
+  		this.currentTrackIndex = 0;
+	}
+	play(playlist[currentTrackIndex].id);
+	// Need a loop here?
+	console.log(playlist[currentTrackIndex]);
+}
+
+function playFirstTrack() {
+	play(playlist[0].id); // plays the first song.
+}
+
+ // Search Function and renders the playlist.
 function search(searchTerm) {
 	SC.get('/tracks', {
 		q: searchTerm,
 	}).then(function(tracks) {
 		playlist = tracks;
 		renderPlaylist(tracks);
-		play(playlist[0].id); // this is just for testing it should be removed
+		playFirstTrack(); // plays the first song.
 	});
 }
 // Add the ability to search
@@ -49,33 +83,29 @@ document.addEventListener("DOMContentLoaded", function(event) {
 	});
 });
 
-
-function renderPlaylist() {
-	$('#playlist').html('');
-// Looping over the array of songs.
-	getPlaylist().forEach(function(item) {
-		var li = $('<li>')
-			.attr('song', item.song)
-			.attr('cover', item.artwork_url)
-			.attr('artist', item.genre)
-						 .attr('id', item.id)
 // Adding an event listener on the <li>.
 // 1. add ID to the newly created li
 // 2. add a click event to that same li calling the play function with that ID
-						 .click(function(id) {
-							 play(li.attr('id'));
-						 })
+// Looping over the array of songs.
+function renderPlaylist() {
+	$('#playlist').html('');
+
+	getPlaylist().forEach(function(item) {
+		var li = $('<li>')
+			.attr('song', item.title)
+			.attr('cover', item.artwork_url)
+			.attr('artist', item.genre)
+			.attr('id', item.id)
+		  .click(function(id) {
+			 play(li.attr('id'));
+		 	})
 			.text(item.genre);
 		$('#playlist').append(li);
 	});
 }
-// renderPlaylist();
-
-
 
 // Initialize - Play First Song
 initAudio($('#playlist li:first-child'));
-
 
 // Initializer Function
 function initAudio(element) {
@@ -85,7 +115,7 @@ function initAudio(element) {
 	var artist = element.attr('artist');
 
 // Create a New Audio Object instance.
-	audio = new Audio('songs/' + song);
+	audio = new Audio(playlist);
 
 // If song is not playing then duration starts at 0.00
 	if (!audio.currentTime) {
@@ -95,6 +125,7 @@ function initAudio(element) {
 	$('#audio-player .title').text(title);
 	$('#audio-player .artist').text(artist);
 
+
 // Insert Cover Image
 	$('img.cover').attr('src','img/' + cover);
 	$('#playlist li').removeClass('active');
@@ -103,6 +134,7 @@ function initAudio(element) {
 
 // Play Button
 $('#play').click(function() {
+	console.log("player is clicked");
 	play(currentTrackId);
 	$('#play').hide();
 	$('#pause').show();
@@ -112,15 +144,16 @@ $('#play').click(function() {
 
 // Pause Button
 $('#pause').click(function() {
-	audio.pause();
+	console.log("pause is clicked");
+	pause();
 	$('#pause').hide();
 	$('#play').show();
 });
 
 // Stop Button
 $('#stop').click(function() {
-	audio.pause();
-	audio.currentTime = 0;
+	console.log("stop is clicked");
+	pause();
 	$('#pause').hide();
 	$('#play').show();
 	$('#duration').fadeOut(400);
@@ -128,31 +161,31 @@ $('#stop').click(function() {
 
 // Next Button
 $('#next').click(function() {
-	audio.pause();
-	var next = $('#playlist li.active').next();
-	if (next.length === 0) {
-		next = $('#playlist li:first-child');
+	console.log("next is clicked");
+	var nextTrack = $('#playlist li.active').next();
+	if (playlist.length === 0) {
+		nextTrack = $('#playlist li:first-child');
 	}
-	initAudio(next);
-	play(currentTrackId);
+	initAudio(nextTrack);
+	next();
 	showDuration();
 });
 
 // Prev Button
 $('#prev').click(function() {
-	audio.pause();
-	var prev = $('#playlist li.active').prev();
+	console.log("prev is clicked");
+	var prevTrack = $('#playlist li.active').prev();
 	if (prev.length === 0) {
-		prev = $('#playlist li:last-child');
+		prevTrack = $('#playlist li:last-child');
 	}
-	initAudio(prev);
-	play(currentTrackId);
+	initAudio(prevTrack);
+	prev();
 	showDuration();
 });
 
 // Playlist Song Click
 $('#playlist li').click(function() {
-	audio.pause();
+	pause();
 	initAudio($(this));
 	$('#play').hide();
 	$('#pause').show();
