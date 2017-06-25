@@ -2,12 +2,11 @@
 
 var audio;
 var playlist = [];
-// Set a a gloabl var currentTrackID...
 var currentTrackId;
 var currentTrackIndex = 0;
 var player;
 
-	SC.initialize({
+	SC.initialize	({
 		client_id: 'fd4e76fc67798bfa742089ed619084a6',
 	});
 
@@ -27,7 +26,7 @@ function setPlaylist(p) {
 // Play function that accepts an ID.
 function play(id) {
 	if (!id) {
-		id = playlist[currentTrackIndex].id;
+	id = playlist[currentTrackIndex].id;
 	}
 
 	SC.stream('/tracks/' + id).then(function(p) {
@@ -92,14 +91,15 @@ function renderPlaylist() {
 
 	getPlaylist().forEach(function(item) {
 		var li = $('<li>')
-			.attr('song', item.title)
+			.attr('song', item.genre)
 			.attr('cover', item.artwork_url)
-			.attr('artist', item.genre)
+			.attr('artist', item.title)
 			.attr('id', item.id)
 		  .click(function(id) {
 			 play(li.attr('id'));
 		 	})
-			.text(item.genre);
+			.text(item.genre)
+			.text(item.title);
 		$('#playlist').append(li);
 	});
 }
@@ -135,52 +135,35 @@ function initAudio(element) {
 // Play Button
 $('#play').click(function() {
 	console.log("player is clicked");
-	play(currentTrackId);
 	$('#play').hide();
 	$('#pause').show();
-	$('#duration').fadeIn(400);
-	showDuration();
+	play();
 });
 
 // Pause Button
 $('#pause').click(function() {
 	console.log("pause is clicked");
-	pause();
 	$('#pause').hide();
 	$('#play').show();
+	pause();
 });
 
 // Stop Button
 $('#stop').click(function() {
 	console.log("stop is clicked");
 	pause();
-	$('#pause').hide();
-	$('#play').show();
-	$('#duration').fadeOut(400);
 });
 
 // Next Button
 $('#next').click(function() {
 	console.log("next is clicked");
-	var nextTrack = $('#playlist li.active').next();
-	if (playlist.length === 0) {
-		nextTrack = $('#playlist li:first-child');
-	}
-	initAudio(nextTrack);
 	next();
-	showDuration();
 });
 
 // Prev Button
 $('#prev').click(function() {
 	console.log("prev is clicked");
-	var prevTrack = $('#playlist li.active').prev();
-	if (prev.length === 0) {
-		prevTrack = $('#playlist li:last-child');
-	}
-	initAudio(prevTrack);
 	prev();
-	showDuration();
 });
 
 // Playlist Song Click
@@ -190,7 +173,7 @@ $('#playlist li').click(function() {
 	$('#play').hide();
 	$('#pause').show();
 	$('#duration').fadeIn(400);
-	play(currentTrackId);
+	play();
 	showDuration();
 });
 

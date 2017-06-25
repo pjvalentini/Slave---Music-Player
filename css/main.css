@@ -62,11 +62,11 @@ body{
   border: 2px solid #ff6b00;
   border-radius: 6px;
   float: right;
-  margin-right: 200px;
+  margin-right: 105px;
   margin-top: -68px
 }
 
-.submitBtn {
+/*.submitBtn {
     float: right;
     color: #ff6b00;
     height: 34px;
@@ -76,7 +76,7 @@ body{
     border-radius: 6px;
     margin-right: 109px;
     margin-top: -68px;
-}
+}*/
 
 #container{
 	width:500px;
@@ -140,7 +140,6 @@ input#volume::-webkit-slider-thumb {
   margin-left: 110px;
   overflow: auto;
 }
-
 
 button#play{
   cursor: pointer;
@@ -215,7 +214,8 @@ button#next{
   font-weight: 100;
 }
 
-#tracker{
+
+#tracker {
 	position:relative;
 	width:100%;
 }
