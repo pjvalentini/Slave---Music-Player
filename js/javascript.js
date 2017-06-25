@@ -33,6 +33,7 @@ function play(id) {
 		player = p;
 		player.play();
 		$('img.cover').attr('src', playlist[currentTrackIndex].artwork_url);
+		$('#audio-player .title').text("Song title");
 	});
 	currentTrackId = id;
 } // end play
@@ -47,7 +48,6 @@ function prev() {
 		  this.currentTrackIndex = this.playlist.length - 1;
 	}
 	play(playlist[currentTrackIndex].id);
-	// need loop here?
 	console.log(playlist[currentTrackIndex]);
 }
 
@@ -57,7 +57,6 @@ function next() {
   		this.currentTrackIndex = 0;
 	}
 	play(playlist[currentTrackIndex].id);
-	// Need a loop here?
 	console.log(playlist[currentTrackIndex]);
 }
 
@@ -123,8 +122,8 @@ function initAudio(element) {
 		$('#duration').html('0.00');
 	}
 // Prints title and Artist to player.
-	$('#audio-player .title').text(title);
-	$('#audio-player .artist').text(artist);
+	$('#audio-player .title').text("Song title");
+	$('#audio-player .artist').text("Artist");
 
 
 // Insert Cover Image
@@ -176,7 +175,7 @@ $('#playlist li').click(function() {
 	$('img.cover').attr('src', playlist[currentTrackIndex].artwork_url);
 	pause();
 	play();
-	showDuration();
+	showDuration(playlist[currentTrackIndex]);
 });
 
 // Volume Control
@@ -202,4 +201,4 @@ function showDuration() {
 		$('#progress').css('width', value + '%');
 	});
 }
-search("David Bowie");
+search("Prince");
