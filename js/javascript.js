@@ -32,6 +32,7 @@ function play(id) {
 	SC.stream('/tracks/' + id).then(function(p) {
 		player = p;
 		player.play();
+		$('img.cover').attr('src', playlist[currentTrackIndex].artwork_url);
 	});
 	currentTrackId = id;
 } // end play
@@ -97,7 +98,7 @@ function renderPlaylist() {
 			.attr('id', item.id)
 		  .click(function(id) {
 			 play(li.attr('id'));
-		 	})
+		 })
 			.text(item.genre)
 			.text(item.title);
 		$('#playlist').append(li);
@@ -127,7 +128,7 @@ function initAudio(element) {
 
 
 // Insert Cover Image
-	$('img.cover').attr('src','img/' + cover);
+	$('img.cover').attr('src', cover);
 	$('#playlist li').removeClass('active');
 	element.addClass('active');
 }
@@ -168,11 +169,12 @@ $('#prev').click(function() {
 
 // Playlist Song Click
 $('#playlist li').click(function() {
-	pause();
-	initAudio($(this));
+	initAudio(this);
 	$('#play').hide();
 	$('#pause').show();
 	$('#duration').fadeIn(400);
+	$('img.cover').attr('src', playlist[currentTrackIndex].artwork_url);
+	pause();
 	play();
 	showDuration();
 });
