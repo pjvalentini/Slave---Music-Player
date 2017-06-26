@@ -122,7 +122,7 @@ function initAudio(element) {
 		$('#duration').html('0.00');
 	}
 // Prints title and Artist to player.
-	function titleArtist(item) {
+	function titleArtist(text) {
 	 $('#audio-player .title').text("Music Player");
 	 $('#audio-player .artist').text("SLAVE");
 	}
@@ -140,6 +140,7 @@ $('#play').click(function() {
 	$('#play').hide();
 	$('#pause').show();
 	play();
+	$('#duration').fadeIn(400);
 });
 
 // Pause Button
@@ -153,6 +154,9 @@ $('#pause').click(function() {
 // Stop Button
 $('#stop').click(function() {
 	console.log("stop is clicked");
+	$('#pause').hide();
+	$('#play').show();
+	$('#duration').fadeOut(400);
 	pause();
 });
 
