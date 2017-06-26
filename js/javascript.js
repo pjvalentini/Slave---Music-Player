@@ -33,7 +33,6 @@ function play(id) {
 		player = p;
 		player.play();
 		$('img.cover').attr('src', playlist[currentTrackIndex].artwork_url);
-		$('#audio-player .title').text("Song title");
 	});
 	currentTrackId = id;
 } // end play
@@ -90,6 +89,7 @@ function renderPlaylist() {
 	$('#playlist').html('');
 
 	getPlaylist().forEach(function(item) {
+		var element;
 		var li = $('<li>')
 			.attr('song', item.genre)
 			.attr('cover', item.artwork_url)
@@ -122,9 +122,11 @@ function initAudio(element) {
 		$('#duration').html('0.00');
 	}
 // Prints title and Artist to player.
-	$('#audio-player .title').text("Song title");
-	$('#audio-player .artist').text("Artist");
-
+	function titleArtist(item) {
+	 $('#audio-player .title').text("Music Player");
+	 $('#audio-player .artist').text("SLAVE");
+	}
+	titleArtist();
 
 // Insert Cover Image
 	$('img.cover').attr('src', cover);
@@ -179,10 +181,12 @@ $('#playlist li').click(function() {
 });
 
 // Volume Control
-$('#volume').change(function() {
-	audio.volume = parseFloat(this.value / 10);
-});
-
+function setVolume() {
+	$('#volume').change(function() {
+		audio.volume = parseFloat(this.value / 10);
+	});
+	setVolume();
+}
 // Time Duration
 function showDuration() {
 	$(audio).bind('timeupdate', function() {

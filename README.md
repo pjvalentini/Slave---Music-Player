@@ -9,7 +9,7 @@ This Slave Music Player works with Soundcloud API
       and mute buttons will be added later).
 
       * Functionality to Soundcloud API is working.
-        - can play one track off of a search, and play songs off the playlist.  Clicking a track on the playlist or clicking next or previous buttons can play a track as well
+        can play one track off of a search, and play songs off the playlist.  Clicking a track on the playlist or clicking next or previous buttons can play a track as well
 
       * Minor CSS upgrades from Version 1.0 6/19/17
 
