@@ -220,10 +220,22 @@ button#next{
 	width:100%;
 }
 
+#playlist li {
+border: 1px solid transparent;
+}
+
 #playlist li.active {
   font-weight: bold;
 	padding:3px;
 	background:#ff4a00;
+  border-radius: 5px;
+}
+
+#playlist li:hover {
+  color: #ff4a00;
+  font-weight: thin;
+	padding:3px;
+	background:#bebebe;
   border-radius: 5px;
 }
 

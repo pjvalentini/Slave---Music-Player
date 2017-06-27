@@ -2,7 +2,7 @@
 
 var audio;
 var playlist = [];
-var currentTrackId;
+var currentTrackId = 0;
 var currentTrackIndex = 0;
 var player;
 
@@ -176,10 +176,9 @@ $('#playlist li').click(function() {
 	$('#play').hide();
 	$('#pause').show();
 	$('#duration').fadeIn(400);
-	$('img.cover').attr('src', playlist[currentTrackIndex].artwork_url);
 	pause();
 	play();
-	showDuration(playlist[currentTrackIndex]);
+	showDuration();
 });
 
 // Volume Control
@@ -207,4 +206,4 @@ function showDuration() {
 		$('#progress').css('width', value + '%');
 	});
 }
-search("Prince");
+search("Metallica");
