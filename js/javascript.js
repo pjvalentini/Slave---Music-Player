@@ -206,4 +206,4 @@ function showDuration() {
 		$('#progress').css('width', value + '%');
 	});
 }
-search("Metallica");
+search("Prince");

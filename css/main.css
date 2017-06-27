@@ -214,14 +214,9 @@ button#next{
   font-weight: 100;
 }
 
-
 #tracker {
 	position:relative;
 	width:100%;
-}
-
-#playlist li {
-border: 1px solid transparent;
 }
 
 #playlist li.active {
