@@ -33,6 +33,7 @@ function play(id) {
 		player = p;
 		player.play();
 		$('img.cover').attr('src', playlist[currentTrackIndex].artwork_url);
+		$('#audio-player .title').text(playlist[currentTrackIndex].title);
 	});
 	currentTrackId = id;
 } // end play
@@ -123,12 +124,7 @@ function initAudio(element) {
 	if (!audio.currentTime) {
 		$('#duration').html('0.00');
 	}
-// Prints title and Artist to player.
-	function titleArtist(text) {
-	 $('.title').text("Music Player");
-	 $('.artist').text("SLAVE");
-	}
-	titleArtist();
+
 
 // Insert Cover Image
 	$('img.cover').attr('src', cover);
@@ -163,9 +159,9 @@ $('#stop').click(function() {
 });
 
 // Next Button
-$('#next').click(function() {
+$('#next').click(function(nextTrack) {
 	console.log("next is clicked");
-	next();
+	next(nextTrack);
 });
 
 // Prev Button
