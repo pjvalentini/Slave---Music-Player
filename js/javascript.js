@@ -86,7 +86,7 @@ document.addEventListener("DOMContentLoaded", function(event) {
 // 2. add a click event to that same li calling the play function with that ID
 // Looping over the array of songs.
 function renderPlaylist() {
-	$('#playlist').html('');
+	$('#playlist li').html('');
 
 	getPlaylist().forEach(function(item) {
 		var element;
@@ -96,7 +96,9 @@ function renderPlaylist() {
 			.attr('artist', item.title)
 			.attr('id', item.id)
 		  .click(function(id) {
+			$('#playlist li').removeClass("active");
 			 play(li.attr('id'));
+			 li.addClass("active");
 		 })
 			.text(item.genre)
 			.text(item.title);
@@ -123,8 +125,8 @@ function initAudio(element) {
 	}
 // Prints title and Artist to player.
 	function titleArtist(text) {
-	 $('#audio-player .title').text("Music Player");
-	 $('#audio-player .artist').text("SLAVE");
+	 $('.title').text("Music Player");
+	 $('.artist').text("SLAVE");
 	}
 	titleArtist();
 
