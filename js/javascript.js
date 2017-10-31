@@ -6,9 +6,9 @@ var currentTrackId = 0;
 var currentTrackIndex = 0;
 var player;
 
-	SC.initialize	({
-		client_id: 'fd4e76fc67798bfa742089ed619084a6',
-	});
+SC.initialize	({
+	client_id: 'fd4e76fc67798bfa742089ed619084a6',
+});
 
 // Hide Pause Initially
 $('#pause').hide();
@@ -45,7 +45,7 @@ function pause() {
 function prev() {
 	currentTrackIndex = currentTrackIndex - 1;
 	if (this.currentTrackIndex < 0) {
-		  this.currentTrackIndex = this.playlist.length - 1;
+			this.currentTrackIndex = this.playlist.length - 1;
 	}
 	play(playlist[currentTrackIndex].id);
 	console.log(playlist[currentTrackIndex]);
@@ -54,7 +54,7 @@ function prev() {
 function next() {
 	currentTrackIndex = currentTrackIndex + 1;
 	if (this.currentTrackIndex > this.playlist.length - 1) {
-  		this.currentTrackIndex = 0;
+			this.currentTrackIndex = 0;
 	}
 	play(playlist[currentTrackIndex].id);
 	console.log(playlist[currentTrackIndex]);
@@ -96,7 +96,7 @@ function renderPlaylist() {
 			.attr('cover', item.artwork_url)
 			.attr('artist', item.title)
 			.attr('id', item.id)
-		  .click(function(id) {
+			.click(function(id) {
 			$('#playlist li').removeClass("active");
 			 play(li.attr('id'));
 			 li.addClass("active");
